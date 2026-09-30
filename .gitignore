@@ -1,0 +1,14 @@
+# 虚拟环境目录
+venv/
+.venv/
+env/
+
+# Python 缓存与编译文件
+__pycache__/
+*.pyc
+
+# VS Code 配置
+.vscode/
+
+# Jupyter Notebook 运行缓存（如有）
+.ipynb_checkpoints/
