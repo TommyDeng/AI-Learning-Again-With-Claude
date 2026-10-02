@@ -39,4 +39,7 @@ plt.scatter(
 plt.title("KMeans聚类结果")
 plt.show()
 
+predictions = kmeans.predict([[0, 0], [5, 5], [10, 10]])  # 预测新数据点的簇标签
+print("新数据点的预测标签:", predictions)
+
 # 模型完全没被告知哪个点属于哪一类，纯靠数据本身的分布把它们分开了——这就是无监督学习。
