@@ -12,3 +12,5 @@ __pycache__/
 
 # Jupyter Notebook 运行缓存（如有）
 .ipynb_checkpoints/
+
+test.py
