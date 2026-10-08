@@ -13,4 +13,9 @@ __pycache__/
 # Jupyter Notebook 运行缓存（如有）
 .ipynb_checkpoints/
 
+# 数据集目录（如有）
+data/
+
+# 临时测试文件
 test.py
+
