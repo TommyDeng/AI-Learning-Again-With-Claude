@@ -19,3 +19,4 @@ data/
 # 临时测试文件
 test.py
 
+best_cifar10.pt
