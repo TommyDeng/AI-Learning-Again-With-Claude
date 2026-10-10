@@ -19,4 +19,5 @@ data/
 # 临时测试文件
 test.py
 
-best_cifar10.pt
+# 运行时产生的模型文件
+models/

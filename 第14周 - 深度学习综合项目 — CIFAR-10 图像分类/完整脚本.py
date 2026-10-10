@@ -185,7 +185,7 @@ def train(use_aug=True, epochs=15, patience=5, device=None):
             best_state = {
                 k: v.detach().cpu().clone() for k, v in model.state_dict().items()
             }
-            torch.save(best_state, "best_cifar10.pt")
+            torch.save(best_state, "models/best_cifar10.pt")
         else:
             bad_epochs += 1
             if bad_epochs >= patience:
