@@ -125,6 +125,32 @@ def retrieve_chroma(query, k=3, source=None):
 for c, s in retrieve_chroma("加班能换休息吗"):
     print(f"{s:.3f} [{c['source']}] {c['text'][:30]}...")
 
+# 每个问题标注"答案应该来自哪份文档"
+eval_set = [
+    ("试用期能不能远程办公", "远程办公"),
+    ("年假怎么申请", "年假制度"),
+    ("出差坐飞机的条件是什么", "差旅报销"),
+    ("加班可以调休吗", "加班与调休"),
+    ("电脑丢了怎么办", "设备与资产"),
+    ("每年有多少学习经费", "培训与学习"),
+    ("能不能用 ChatGPT 处理客户资料", "信息安全"),
+    ("提前转正需要谁批准", "试用期"),
+    ("春节值班有几倍工资", "加班与调休"),
+    ("高铁坐几等座", "差旅报销"),
+]
+
+
+def hit_rate(k):
+    hits = 0
+    for q, gold in eval_set:
+        sources = [c["source"] for c, _ in retrieve(q, k)]
+        hits += gold in sources
+    return hits / len(eval_set)
+
+
+for k in [1, 2, 3]:
+    print(f"Top-{k} 命中率: {hit_rate(k):.0%}")
+
 
 # 最后一条可以直接加一个检索阈值:
 def rag_answer_safe(question, k=3, threshold=0.35):
