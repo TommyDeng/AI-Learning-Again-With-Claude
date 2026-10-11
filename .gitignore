@@ -3,6 +3,9 @@ venv/
 .venv/
 env/
 
+# 环境变量文件
+.env
+
 # Python 缓存与编译文件
 __pycache__/
 *.pyc
@@ -21,3 +24,4 @@ test.py
 
 # 运行时产生的模型文件
 models/
+docs/
