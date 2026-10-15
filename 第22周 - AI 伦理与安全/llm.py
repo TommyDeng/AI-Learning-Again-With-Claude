@@ -13,11 +13,17 @@ MODEL = None
 if MODEL_TYPE == "ANTHROPIC":
     client = anthropic.Anthropic()  # 自动读取环境变量 ANTHROPIC_API_KEY
     MODEL = os.getenv("ANTHROPIC_MODEL")  # 模型名称更新很快,以官方文档为准
-else:
+elif MODEL_TYPE == "GROQ":
     MODEL = os.getenv("GROQ_MODEL")
     client = OpenAI(
         api_key=os.getenv("GROQ_API_KEY"),
         base_url=os.getenv("GROQ_URL"),
+    )
+else:
+    MODEL = os.getenv("OLLAMA_MODEL")
+    client = OpenAI(
+        api_key=os.getenv("OLLAMA_API_KEY"),
+        base_url=os.getenv("OLLAMA_URL"),
     )
 
 
@@ -42,7 +48,7 @@ def ask(prompt, system=None, max_tokens=2000, temperature=None):
 
     if temperature is not None:  # 即使是0也要传入，所以使用 is not None 判断
         kwargs["temperature"] = temperature
-    # print(f"kwargs: {kwargs}")
+    print(f"kwargs: {kwargs}")
 
     # 使用 try...except 捕获 API 调用过程中的错误并优雅显示
     try:
